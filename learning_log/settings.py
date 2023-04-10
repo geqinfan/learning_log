@@ -22,9 +22,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure--mm&jhigz6drqz6-i)o)_o-_&viow(e1iqa7lk*js2x13x%jtv'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', 'zhangbg.xyz', 'www.zhangbg.xyz']
 
 # Application definition
 
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # 我的应用程序
     'learning_logs',
     'users',
+    'testdj',
 ]
 
 MIDDLEWARE = [
@@ -58,7 +59,7 @@ ROOT_URLCONF = 'learning_log.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'learning_log/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -125,6 +126,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # 我的设置
 LOGIN_URL = '/users/login/'
+
 # django-bootstrap3的设置
 BOOTSTRAP3 = {
     'include_jquery': True,
