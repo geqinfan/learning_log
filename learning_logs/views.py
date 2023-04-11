@@ -6,6 +6,16 @@ from .models import Topic, Entry
 from .forms import TopicForm, EntryForm
 
 
+# 404
+def page_not_found(request, exception):
+    return render(request, 'learning_log/404.html')
+
+
+# 500
+def page_error(request):
+    return render(request, 'learning_log/500.html')
+
+
 # Create your views here.
 def check_topic_owner(topic, request):
     if topic.owner != request.user:
@@ -32,7 +42,7 @@ def topic(request, topic_id):
     topic = get_object_or_404(Topic, id=topic_id)
     # 确认请求的主题属于当前用户
     # check_topic_owner(topic, request)
-    if topic.owner != request.user:
+    if not topic or topic.owner != request.user:
         raise Http404
 
     entries = topic.entry_set.order_by('-date_added')

@@ -3,8 +3,12 @@
 from django.urls import path
 
 from . import views
+from .views import page_not_found, page_error
 
 app_name = 'learning_logs'
+
+
+
 urlpatterns = [
     # 主页
     path('', views.index, name='index'),
